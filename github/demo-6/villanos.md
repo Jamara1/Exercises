@@ -4,5 +4,4 @@
 2. Joker
 3. Flash reverse
 4. Doomsday
-
-# Notas:
+5. Harley Queen
