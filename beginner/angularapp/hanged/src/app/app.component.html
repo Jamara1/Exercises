@@ -1,0 +1,45 @@
+<style>
+    .hanged-img {
+        height: 400px;
+    }
+
+    button {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+</style>
+
+<div class="row">
+    <div class="col text-center">
+        <img src="assets/img/{{ try }}.png" class="hanged-img" alt="9.png">
+        <h3>Try <small>{{ try }} / 9</small></h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <h1>{{ wordHidden }}</h1>
+    </div>
+</div>
+
+<div class="row" *ngIf="win">
+  <div class="col text-center">
+    <h1>Congratulations!</h1>
+    <h3>:D</h3>
+  </div>
+</div>
+
+<div class="row" *ngIf="loser">
+  <div class="col text-center">
+    <h1>Loser! :(</h1>
+    <h3>{{ word }}</h3>
+  </div>
+</div>
+
+<div class="row" *ngIf="!win && !loser">
+    <div class="col text-center">
+        <button (click)="check(letter)" *ngFor="let letter of letters" class="btn btn-primary">
+            {{ letter }}
+        </button>
+    </div>
+</div>
