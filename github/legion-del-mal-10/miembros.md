@@ -22,3 +22,5 @@
 21. Giganta
 22. Deadshot
 22. Nick Fury
+
+Delete Captain Boomerang
