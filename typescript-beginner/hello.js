@@ -10,3 +10,6 @@ var fail = {
     bar: getBar()
 };
 takeSomethingComplex(fail);
+var fullName = 'Johan Amara';
+var count = fullName.length;
+console.log(count);
