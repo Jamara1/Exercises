@@ -29,3 +29,5 @@ type NewClient = Person & Client;
 
 let x: NewClient;
 x.clientNumber;
+
+export default {}
