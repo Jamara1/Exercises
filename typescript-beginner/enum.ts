@@ -25,3 +25,5 @@ enum Example {
 
 console.log(Example.P2); //6
 
+export default {}
+
