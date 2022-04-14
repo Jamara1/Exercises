@@ -1,21 +1,21 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.show = exports.title = void 0;
-/* Set the value that is send to the import.ts file */
+/* Set the value that is send to the import.ts file from one at a time */
 exports.title = "Hello world!";
-var show = function (data) {
+const show = (data) => {
     console.log(data);
 };
 exports.show = show;
-var People = /** @class */ (function () {
-    function People(name, age, height) {
+class People {
+    constructor(name, age, height) {
         this.name = name;
         this.age = age;
         this.height = height;
     }
-    People.prototype.show = function () {
+    show() {
         console.log(this.name);
-    };
-    return People;
-}());
-exports["default"] = People;
+    }
+}
+/* Send only the People class */
+exports.default = People;

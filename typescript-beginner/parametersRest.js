@@ -1,11 +1,7 @@
 "use strict";
-exports.__esModule = true;
-var dessertMenu = function (dessert) {
-    var fruit = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        fruit[_i - 1] = arguments[_i];
-    }
-    console.log("The dessert is ".concat(dessert, " and you have ").concat(fruit));
+Object.defineProperty(exports, "__esModule", { value: true });
+const dessertMenu = (dessert, ...fruit) => {
+    console.log(`The dessert is ${dessert} and you have ${fruit}`);
 };
 dessertMenu('Three milks', 'orange', 'banana', 'strawberry');
-exports["default"] = {};
+exports.default = {};

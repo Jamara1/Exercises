@@ -1,9 +1,9 @@
 "use strict";
-exports.__esModule = true;
-var color = "blue";
-var dado = 5;
-var result = {
+Object.defineProperty(exports, "__esModule", { value: true });
+const color = "blue";
+const dado = 5;
+const result = {
     isValid: true,
     reason: null
 };
-exports["default"] = {};
+exports.default = {};

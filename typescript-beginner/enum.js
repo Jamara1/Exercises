@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var Address;
 (function (Address) {
     Address["Up"] = "UP";
@@ -7,7 +7,7 @@ var Address;
     Address["Right"] = "RIGHT";
     Address["Left"] = "LEFT";
 })(Address || (Address = {}));
-var ball = {
+const ball = {
     size: 10,
     initialPosition: Address.Down
 };
@@ -18,4 +18,4 @@ var Example;
     Example[Example["P2"] = 6] = "P2";
 })(Example || (Example = {}));
 console.log(Example.P2); //6
-exports["default"] = {};
+exports.default = {};

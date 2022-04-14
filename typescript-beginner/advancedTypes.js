@@ -1,6 +1,6 @@
 "use strict";
-exports.__esModule = true;
-var pet = getSmallPet();
+Object.defineProperty(exports, "__esModule", { value: true });
+let pet = getSmallPet();
 if ("swim" in pet) {
     pet.swim();
 }
@@ -13,9 +13,9 @@ if (isFish(pet)) {
 else {
     pet.fly();
 }
-var tiger = { name: 'Tiger', size: 12, gender: 'Male' };
-var tiger2 = {
+const tiger = { name: 'Tiger', size: 12, gender: 'Male' };
+const tiger2 = {
     name: "Tiger",
     gender: "Male"
 };
-exports["default"] = {};
+exports.default = {};

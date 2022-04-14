@@ -1,17 +1,17 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 /* Function for text */
-var text = function (data) {
+const text = (data) => {
     return data;
 };
 console.log(text("Hello"));
 /* Function for number */
-var numeric = function (data) {
+const numeric = (data) => {
     return data;
 };
 console.log(numeric(50));
 /* Function for boolean */
-var status = function (data) {
+const status = (data) => {
     return data;
 };
 console.log(status(true));
@@ -21,4 +21,4 @@ function generic(data) {
 }
 ;
 console.log(generic(false));
-exports["default"] = {};
+exports.default = {};

@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
-var pet = getSmallPet();
+Object.defineProperty(exports, "__esModule", { value: true });
+const pet = getSmallPet();
 pet.layEggs();
-var x;
+let x;
 x.clientNumber;
-exports["default"] = {};
+exports.default = {};
