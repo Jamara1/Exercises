@@ -1,0 +1,16 @@
+const firstname = 'Johan';
+const lastname = 'Amara';
+const age = 22;
+
+function getAge() {
+    return 100+100+300;
+}
+
+/* const output = firstname + " " + lastname + " ( " + age + " )"; */
+/* const output = `${firstname} ${lastname} ( ${age} )`; */
+const output = `${firstname}
+${lastname}
+( ${age} )`;
+console.log(output);
+
+export default {}
