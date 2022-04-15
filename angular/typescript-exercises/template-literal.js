@@ -10,6 +10,6 @@ function getAge() {
 /* const output = `${firstname} ${lastname} ( ${age} )`; */
 const output = `${firstname}
 ${lastname}
-( ${age} )`;
+( ${getAge()} )`;
 console.log(output);
 exports.default = {};
