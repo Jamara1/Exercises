@@ -1,0 +1,14 @@
+<h1>Search: <small>{{ text }}</small></h1>
+<hr>
+
+<div class="row">
+
+  <div class="animated fadeIn col-md-12" *ngIf="heroes.length === 0">
+    <div class="alert alert-info" role="alert">
+      There is no result with the term: {{ text }}
+    </div>
+  </div>
+
+  <app-hero-card class="col-md-6" (selectedHero)="seeHero($event)" [hero]="hero" [index]="hero.id"
+    *ngFor="let hero of heroes; let i = index;"></app-hero-card>
+</div>
