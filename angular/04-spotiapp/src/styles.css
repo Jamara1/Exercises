@@ -66,3 +66,22 @@ hr {
 .fadeIn {
   animation-name: fadeIn;
 }
+
+.table>tbody>tr>td {
+  vertical-align: middle;
+}
+
+a {
+  color: #1ED760;
+}
+
+a:hover {
+  color: #FFFFFF;
+}
+
+.alert-info-light {
+  background-color: #ffffffa8;
+  color: black;
+  text-align: center;
+  padding: 2rem 0 1.5rem 0;
+}

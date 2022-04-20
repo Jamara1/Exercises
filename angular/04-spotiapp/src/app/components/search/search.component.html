@@ -5,6 +5,12 @@
   </div>
 
   <app-loading *ngIf="loading"></app-loading>
+
+  <div *ngIf="artists.length === 0 && noFound" class="alert alert-info-light">
+    <h1>Not found!</h1>
+    <p>Artist isn't in spotiApp</p>
+  </div>
+
   <app-cards *ngIf="!loading" [items]="artists"></app-cards>
 
 </div>
