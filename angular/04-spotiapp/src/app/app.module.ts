@@ -14,6 +14,8 @@ import { NoImagePipe } from './pipes/no-image.pipe';
 import { CardsComponent } from './components/cards/cards.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { DomSecurityPipe } from './pipes/dom-security.pipe';
+import { MyLibraryComponent } from './components/my-library/my-library.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { DomSecurityPipe } from './pipes/dom-security.pipe';
     NoImagePipe,
     CardsComponent,
     LoadingComponent,
-    DomSecurityPipe
+    DomSecurityPipe,
+    MyLibraryComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
