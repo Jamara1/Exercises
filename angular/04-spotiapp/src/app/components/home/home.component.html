@@ -1,3 +1,16 @@
-<ul>
-  <li *ngFor="let country of countries">{{ country.name.common }} - {{ country.population | number }}</li>
-</ul>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+
+  <div *ngFor="let newSong of newSongs" class="col">
+    <div class="card">
+      <img [src]="newSong.images[0].url" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ newSong.name }}</h5>
+        <p class="card-text">
+          <span *ngFor="let artist of newSong.artists" class="badge bg-primary">
+            {{ artist.name }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
