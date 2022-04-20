@@ -9,19 +9,28 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class HomeComponent {
 
-  newSongs: any[] = [];
   loading: boolean;
+  error: boolean;
+  messageError: string = "";
+  newSongs: any[] = [];
 
   constructor(private _spotifyService: SpotifyService,) {
 
     this.loading = true;
+    this.error = false;
 
     this._spotifyService.getNewRealease()
-    .subscribe((response: any) => {
-      this.newSongs = response;
-      this.loading = false;
+      .subscribe({
+        next: (response: any) => {
+          this.newSongs = response;
+          this.loading = false;
+        },
+        error: (err: any) => {
+          this.loading = false;
+          this.error = true;
+          this.messageError = err.error.error.message;
+        }
       });
-
   }
 
 }
