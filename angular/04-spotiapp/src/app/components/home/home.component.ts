@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
