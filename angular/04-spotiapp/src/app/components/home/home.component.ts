@@ -14,8 +14,7 @@ export class HomeComponent {
   constructor(private _spotifyService: SpotifyService,) {
     this._spotifyService.getNewRealease()
       .subscribe((response: any) => {
-        console.log(response);
-        this.newSongs = response.albums.items;
+        this.newSongs = response;
       });
   }
 
