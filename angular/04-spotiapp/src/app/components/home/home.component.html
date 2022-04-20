@@ -2,7 +2,7 @@
 
   <div *ngFor="let newSong of newSongs" class="col">
     <div class="card">
-      <img [src]="newSong.images[0].url" class="card-img-top" [alt]="newSong.name">
+      <img [src]="newSong.images | noimage" class="card-img-top" [alt]="newSong.name">
       <div class="card-body">
         <h5 class="card-title">{{ newSong.name }}</h5>
         <p class="card-text">
