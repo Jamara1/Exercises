@@ -11,16 +11,27 @@ export class CardsComponent {
 
   constructor(private router: Router) { }
 
-  seeArtist(item: any) {
-    let artistId;
+  navigationOptions(item: any) {
+    let patch = 'artist';
+    let id;
+
+    /* if (item.type === 'artist') {
+      id = item.id;
+    } else {
+      id = item.artists[0].id;
+    } */
 
     if (item.type === 'artist') {
-      artistId = item.id;
+      id = item.id;
+    } else if (item.type === 'album') {
+      id = item.artists[0].id;
     } else {
-      artistId = item.artists[0].id;
+      patch = 'player';
+      id = item.id;
     }
 
-    this.router.navigate(['artist',artistId]);
+    this.router.navigate([patch, id]);
+
   }
 
 }

@@ -1,16 +1,23 @@
 <div class="row row-cols-1 row-cols-md-4 g-4 animated fadeIn">
 
-  <div *ngFor="let item of items" class="col">
-    <div (click)="seeArtist(item)" class="card puntero">
-      <img [src]="item.images | noimage" class="card-img-top" [alt]="item.name">
-      <div class="card-body">
-        <h5 class="card-title">{{ item.name }}</h5>
-        <p class="card-text">
-          <span *ngFor="let artist of item.artists" class="badge bg-success">
-            {{ artist.name }}
-          </span>
-        </p>
+  <div *ngFor="let item of items" class="col card-hover">
+    <div (click)="navigationOptions(item)" class="card puntero">
+      <div class="card-container">
+        <div class="img-container">
+          <img [src]="item | noimage" class="card-img-top img-hover" [alt]="item.name">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">
+            <span *ngFor="let artist of item.artists" class="badge bg-success">
+              {{ artist.name }}
+            </span>
+          </p>
+        </div>
       </div>
+
+      <iframe *ngIf="item.type === 'track'" [src]="item.uri | domsecurity:'https://open.spotify.com/embed/?uri='" height="80"
+        frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   </div>
 </div>
