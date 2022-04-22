@@ -2,7 +2,7 @@
 
 <div class="row animated fadeIn" *ngIf="!loading">
   <div class="col-2">
-    <img [src]="artist.images | noimage" [alt]="artist.name" class="img-thumbnail img-circle">
+    <img [src]="artist | noimage" [alt]="artist.name" class="img-thumbnail img-circle">
   </div>
 
   <div class="col pt-4">
@@ -35,7 +35,7 @@
         <tbody>
           <tr *ngFor="let track of topTracks">
             <td>
-              <img [src]="track.album.images | noimage" [alt]="track.name" class="img-thumb">
+              <img [src]="track | noimage" [alt]="track.name" class="img-thumb">
             </td>
             <td>{{ track.album.name }}</td>
             <td>{{ track.name }}</td>

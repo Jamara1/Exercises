@@ -1,14 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 @Component({
   selector: 'app-my-library',
   templateUrl: './my-library.component.html',
 })
-export class MyLibraryComponent implements OnInit {
+export class MyLibraryComponent {
 
-  constructor() { }
+  loading: boolean;
+  likes: any[] = [];
+  text: string = '';
 
-  ngOnInit(): void {
+  constructor(
+    private _spotifyService: SpotifyService
+  ) {
+    this.loading = true;
+    this.likes = this._spotifyService.getDefault();
+    this.search(this.text);
+  }
+
+  search(text: string) {
+    this.likes = this._spotifyService.searchMyLibrary(text);
+    this.loading = false;
   }
 
 }

@@ -1,1 +1,21 @@
-<p>my-library works!</p>
+<div class="row">
+
+  <div class="col mb-5">
+    <input #text (keyup)="search(text.value)" type="text" class="form-control" placeholder="Search artist...">
+  </div>
+
+  <app-loading *ngIf="loading"></app-loading>
+
+  <div *ngIf="text.value === '' && likes.length === 0" class="alert alert-info-light">
+    <h1>Not favorites!</h1>
+    <p>You don't have favorite songs on spotiApp</p>
+  </div>
+
+    <div *ngIf="text.value !== '' && likes.length === 0" class="alert alert-info-light">
+      <h1>Not found!</h1>
+      <p>Track isn't in favorites</p>
+    </div>
+
+  <app-cards *ngIf="!loading" [items]="likes"></app-cards>
+
+</div>

@@ -1,1 +1,77 @@
-<p>player works!</p>
+<div>
+
+  <!-- Head -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="d-flex">
+        <h2>Track player</h2>
+        <div style="margin-left: auto;">
+          <button routerLink="/my-library" class="btn btn-outline-danger">Go back</button>
+        </div>
+      </div>
+      <hr>
+      <ul class="list-group mt-4">
+        <li class="list-group-item pointer" routerLinkActive="active" (click)="open()">
+          <strong>Track - </strong><small>{{ track.name }}</small>
+          <a (click)="navigateArtist()">
+            <span class="badge bg-success float-end py-2">
+              Artist: {{ track.artists[0].name }}
+            </span>
+          </a>
+        </li>
+      </ul>
+      <!-- <iframe id="playerFrame" [src]="uri | domsecurity:'https://open.spotify.com/embed/?uri='" class="w-100 mt-2" frameborder="0"
+      allowtransparency="true" allow="encrypted-media" controls></iframe> -->
+    </div>
+  </div>
+  <!-- End head -->
+
+  <!-- Image -->
+  <div class="mb-4 d-flex justify-content-center bg-dark">
+    <img class="img img-fluid" [src]="track | noimage" [alt]="track.album.name">
+  </div>
+  <!-- End image -->
+
+  <!-- Player -->
+  <div class="card bg-dark p-4">
+
+    <div class="d-flex justify-content-center align-items-center mb-2">
+      <button (click)="back()" class="btn-rounded-small me-2">
+        <i class="fa-solid fa-backward-step"></i>
+      </button>
+      <button *ngIf="status" (click)="play()" class="btn-rounded-medium">
+        <i class="fa-solid fa-play"></i>
+      </button>
+      <button *ngIf="!status" (click)="pause()" class="btn-rounded-medium">
+        <i class="fa-solid fa-pause"></i>
+      </button>
+      <button (click)="next()" class="btn-rounded-small ms-2">
+        <i class="fa-solid fa-forward-step"></i>
+      </button>
+      <!-- <button (click)="stop()" class="btn-rounded">
+          <i class="fa-solid fa-stop"></i>
+        </button> -->
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col col-sm-10">
+          <span>{{ currentTime | time:'HH:mm:ss' }}</span>
+          <span class="float-end">{{ duration | time:'HH:mm:ss' }}</span>
+          <br>
+            <input class="w-100 mt-2 pointer" type="range" min="0" [max]="duration | integer" [value]="seek" (input)="setSeekTo($event)">
+        </div>
+
+        <div class="col col-sm-2 align-self-end">
+          <div class="col text-end">
+            <i class="fa-solid fa-volume-high pe-3"></i>
+            <input class="pointer mt-2" style="width: 70%;" type="range" min="0" max="1" step="0.01" value="1" (input)="setVolume($event)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- End player -->
+
+</div>
