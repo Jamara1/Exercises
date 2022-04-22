@@ -1,12 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+body::-webkit-scrollbar {
+  width: 3px;
+  /* width of the entire scrollbar */
+}
+
+
+body::-webkit-scrollbar-track {
+  background: rgba(9, 9, 9, 0.292);
+  /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #1ED760;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  width: 5px
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
 
 body {
-  background-color: black;
+  height: 100%;
+  background-color: #00000090;
+  background-image: url('assets/image/austin-opacity.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   color: white !important;
 }
 
 hr {
   border-color: white;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .puntero {
@@ -80,7 +111,7 @@ a:hover {
 }
 
 .alert-info-light {
-  background-color: #fffffff0;
+  background-color: #ffffffcc;
   color: black;
   text-align: center;
   padding: 2rem 0 1.5rem 0;
