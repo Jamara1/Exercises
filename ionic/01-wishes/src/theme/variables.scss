@@ -27,6 +27,14 @@
   --ion-color-tertiary-shade: #4854e0;
   --ion-color-tertiary-tint: #6370ff;
 
+  /* purple */
+  --ion-color-purple: #322f7c;
+  --ion-color-purple-rgb: 106,100,255;
+  --ion-color-purple-contrast: #ffffff;
+  --ion-color-purple-contrast-rgb: 255,255,255;
+  --ion-color-purple-shade: #25235c;
+  --ion-color-purple-tint: #5652d4;
+
   /** success **/
   --ion-color-success: #2dd36f;
   --ion-color-success-rgb: 45, 211, 111;
@@ -103,6 +111,13 @@
     --ion-color-tertiary-contrast-rgb: 255,255,255;
     --ion-color-tertiary-shade: #5d58e0;
     --ion-color-tertiary-tint: #7974ff;
+
+    --ion-color-purple: #322f7c;
+    --ion-color-purple-rgb: 106,100,255;
+    --ion-color-purple-contrast: #ffffff;
+    --ion-color-purple-contrast-rgb: 255,255,255;
+    --ion-color-purple-shade: #25235c;
+    --ion-color-purple-tint: #5652d4;
 
     --ion-color-success: #2fdf75;
     --ion-color-success-rgb: 47,223,117;
@@ -237,4 +252,8 @@
 
 .tab-selected {
   color: #7044ff !important;
+}
+
+.color-purple {
+  background-color: #322f7c;
 }

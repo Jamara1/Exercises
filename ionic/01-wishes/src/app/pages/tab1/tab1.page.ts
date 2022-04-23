@@ -1,6 +1,7 @@
-import { List } from './../../models/list.model';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { WishesService } from 'src/app/services/wishes.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -9,10 +10,50 @@ import { WishesService } from 'src/app/services/wishes.service';
 })
 export class Tab1Page {
 
-  lists: List[] = []
+  constructor(
+    private router: Router,
+    private alertCtrl: AlertController,
+    public _wishesService: WishesService,
+  ) {  }
 
-  constructor(public _wishesService: WishesService) {
-    this.lists = _wishesService.lists;
+  navList() {
+    this.router.navigateByUrl('tabs/tab1/add');
+  }
+
+  async addList() {
+    const alert = await this.alertCtrl.create({
+      header: 'New list',
+      inputs: [
+        {
+          name: 'title',
+          type: 'text',
+          placeholder: 'List name'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel');
+          }
+        },
+        {
+          text: 'Create',
+          handler: (data) => {
+            if (data.title.length === 0) {
+              return;
+            }
+
+            const listId = this._wishesService.createList(data.title);
+
+            this.router.navigateByUrl(`tabs/add/${listId}`);
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 
 }

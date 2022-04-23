@@ -8,10 +8,12 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-list>
-    <ion-item *ngFor="let item of lists" detail>
-      <ion-label>{{ item.title }}</ion-label>
-    </ion-item>
-  </ion-list>
+  <app-lists [terminated]="false"></app-lists>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="tertiary" (click)="addList()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

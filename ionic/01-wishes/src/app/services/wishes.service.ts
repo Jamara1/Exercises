@@ -9,9 +9,36 @@ export class WishesService {
   lists: List[] = [];
 
   constructor() {
-    const list1 = new List('Collect infinity stones');
-    const list2 = new List('Heroes to disappear');
-
-    this.lists.push(list1, list2)
+    this.loadStorage();
   }
+
+  createList(title: string) {
+    const newList = new List(title);
+    this.lists.push(newList);
+    this.saveStorage();
+
+    return newList.id;
+  }
+
+  getList(id: string | number): List {
+    id = Number(id);
+    return this.lists.find(dataList => dataList.id === id);
+  }
+
+  saveStorage() {
+    localStorage.setItem('data', JSON.stringify(this.lists));
+  }
+
+  loadStorage() {
+    if (JSON.parse(localStorage.getItem('data'))) {
+      this.lists = JSON.parse(localStorage.getItem('data'));
+    }
+  }
+
+  removeList(list: List) {
+    this.lists = this.lists.filter(dataList => dataList.id !== list.id);
+
+    this.saveStorage();
+  }
+
 }
