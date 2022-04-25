@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h2>Class</h2>
+
+  <br>
+
+  <div class="conotainer">
+
+    <div [ngClass]="alert" class="alert" role="alert">
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </div>
+
+    <button type="button" class="btn btn-info me-1 text-white" (click)="alert = 'alert-info'">Info</button>
+    <button type="button" class="btn btn-success me-1" (click)="alert = 'alert-success'">Success</button>
+    <button type="button" class="btn btn-danger" (click)="alert = 'alert-danger'">Danger</button>
+
+    <hr>
+
+    <h3 [ngClass]="{ 'text-danger': properties.danger, 'text-info': !properties.danger }">Hello world!</h3>
+
+    <button type="button" [ngClass]="{ 'btn-danger': properties.danger, 'btn-info': !properties.danger }"
+    class="btn btn-danger text-white" (click)="properties.danger = !properties.danger">Change</button>
+
+    <hr>
+
+    <h3>Asynchronous processes</h3>
+
+    <button type="button" class="btn btn-primary" (click)="execute()" [disabled]="loading">
+      <i [ngClass]="{ 'fa-refresh fa-spin': loading, 'fa-floppy-disk': !loading }" class="fa me-2"></i>
+      <span *ngIf="!loading">Save changes</span>
+      <span *ngIf="loading">Wait please</span>
+    </button>
+
+    <hr>
+
+  </div>
+
+</div>

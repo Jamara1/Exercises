@@ -1,0 +1,47 @@
+<div class="container">
+
+  <h2>ngSwitch</h2>
+
+  <br>
+
+  <div class="row">
+
+    <div class="col col-sm-8">
+      <div [ngSwitch]="alert">
+        <strong>
+          <div *ngSwitchCase="'success'">SUCCESS</div>
+          <div *ngSwitchCase="'info'">INFORMATION</div>
+          <div *ngSwitchCase="'warning'">WARNING</div>
+          <div *ngSwitchDefault>DANGER</div>
+        </strong>
+      </div>
+    </div>
+
+    <div class="col col-sm-4">
+      <button type="button" class="btn btn-primary float-end" (click)="alert = 'success'">
+        Change
+      </button>
+    </div>
+  </div>
+
+  <br>
+
+  <div [ngSwitch]="alert">
+
+    <div *ngSwitchCase="'success'" class="alert alert-success" role="alert">
+      A simple success alert—check it out!
+    </div>
+    <div *ngSwitchCase="'info'" class="alert alert-info" role="alert">
+      A simple info alert—check it out!
+    </div>
+    <div *ngSwitchCase="'warning'" class="alert alert-warning" role="alert">
+      A simple warning alert—check it out!
+    </div>
+    <div *ngSwitchDefault class="alert alert-danger" role="alert">
+      A simple danger alert—check it out!
+    </div>
+  </div>
+
+  <hr>
+
+</div>
