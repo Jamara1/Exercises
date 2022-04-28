@@ -1,42 +1,82 @@
 <h4>Forms <small> Template </small></h4>
-<hr>
+<hr />
 <form (ngSubmit)="save(formTemplate)" autocomplete="off" #formTemplate="ngForm">
-
   <div class="form-group row mb-3">
     <label class="col-2 col-form-label">Firstname</label>
     <div class="col-8">
+      <input
+        class="form-control is-invalid"
+        type="text"
+        name="firstname"
+        placeholder="Firstname"
+        minlength="5"
+        required
+        [class.is-invalid]="firstname.touched && firstname.invalid"
+        [(ngModel)]="user.firstname"
+        #firstname="ngModel"
+      />
 
-      <input class="form-control is-invalid" type="text" name="firstname" [(ngModel)]="firstname" placeholder="Firstname"
-        minlength="5" required>
+      <small
+        *ngIf="firstname.touched && firstname.invalid"
+        class="form-text text-danger"
+      >
+        Firstname requires that it be more than 5 characters
+      </small>
     </div>
   </div>
 
   <div class="form-group row mb-3">
     <label class="col-2 col-form-label">Lastname</label>
     <div class="col-8">
+      <input
+        class="form-control is-invalid"
+        type="text"
+        name="lastname"
+        placeholder="Lastname"
+        minlength="5"
+        required
+        [(ngModel)]="user.lastname"
+        [class.is-invalid]="lastname.touched && lastname.invalid"
+        #lastname="ngModel"
+      />
 
-      <input class="form-control" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Lastname"
-        minlength="5" required>
+      <small
+        *ngIf="lastname.touched && lastname.invalid"
+        class="form-text text-danger"
+      >
+        Lastname requires that it be more than 5 characters
+      </small>
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">E-mail</label>
     <div class="col-8">
+      <input
+        class="form-control is-invalid"
+        type="email"
+        name="email"
+        placeholder="E-mail"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        required
+        [class.is-invalid]="email.touched && email.invalid"
+        [(ngModel)]="user.email"
+        #email="ngModel"
+      />
 
-      <input class="form-control" type="email" name="email" [(ngModel)]="email" placeholder="E-mail" email required>
+      <small
+        *ngIf="email.touched && email.invalid"
+        class="form-text text-danger"
+      >
+        The email format is not correct
+      </small>
     </div>
   </div>
-
-
 
   <div class="form-group row mt-4">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="col-8">
-      <button type="submit" class="btn btn-outline-primary w-100">
-        SAVE
-      </button>
+      <button type="submit" class="btn btn-outline-primary w-100">SAVE</button>
     </div>
   </div>
-
 </form>

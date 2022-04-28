@@ -9,9 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
 
-  firstname: string = '';
-  lastname: string = '';
-  email: string = '';
+  user: User = new User();
 
   constructor() { }
 
@@ -19,7 +17,24 @@ export class TemplateComponent implements OnInit {
   }
 
   save(form: NgForm) {
+
+    if (form.invalid) {
+
+      Object.values(form.controls).forEach(control => {
+        control.markAsTouched();
+      });
+
+      return;
+    }
+
     console.log(form.value);
+    console.log(this.user);
   }
 
+}
+
+class User {
+  firstname: string = 'Johan';
+  lastname: string = 'Amara';
+  email: string = '7.6amarajohan@gmail.com';
 }
