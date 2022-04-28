@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReactiveComponent implements OnInit {
 
+  firstname: string = '';
+  lastname: string = '';
+  email: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  save(form: NgForm) {
+    console.log(form.value);
   }
 
 }
