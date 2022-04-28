@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row mb-3">
     <label class="col-2 col-form-label">E-mail</label>
     <div class="col-8">
       <input
@@ -69,6 +69,74 @@
         class="form-text text-danger"
       >
         The email format is not correct
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-2 col-form-label">Country</label>
+    <div class="col-8">
+      <select
+        class="form-select is-invalid"
+        name="country"
+        [disabled]="countries.length === 0"
+        required
+        [class.is-invalid]="country.touched && country.invalid"
+        [(ngModel)]="user.country"
+        #country="ngModel"
+      >
+        <option *ngFor="let country of countries" [value]="country.code">
+          {{ country.name }}
+        </option>
+      </select>
+
+      <small
+        *ngIf="country.touched && country.invalid"
+        class="form-text text-danger"
+      >
+        Select a country
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Gender</label>
+    <div class="col-8 pt-2">
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          id="male"
+          value="M"
+          required
+          [class.is-invalid]="gender.touched && gender.invalid"
+          [(ngModel)]="user.gender"
+          #gender="ngModel"
+        />
+        <label class="form-check-label" for="male"> Male </label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          id="female"
+          value="F"
+          required
+          [class.is-invalid]="gender.touched && gender.invalid"
+          [(ngModel)]="user.gender"
+          #gender="ngModel"
+        />
+        <label class="form-check-label" for="female"> Female </label>
+      </div>
+
+      <small
+        *ngIf="country.touched && country.invalid"
+        class="form-text text-danger"
+      >
+        Select a country
       </small>
     </div>
   </div>
