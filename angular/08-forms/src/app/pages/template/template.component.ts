@@ -1,6 +1,7 @@
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CountriesService } from 'src/app/services/countries.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-template',
@@ -40,12 +41,4 @@ export class TemplateComponent implements OnInit {
     console.log(this.user);
   }
 
-}
-
-class User {
-  firstname: string = 'Johan';
-  lastname: string = 'Amara';
-  email: string = '7.6amarajohan@gmail.com';
-  country: string = 'COL';
-  gender: string = 'M';
 }

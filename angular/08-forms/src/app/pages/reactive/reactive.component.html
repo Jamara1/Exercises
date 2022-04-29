@@ -1,42 +1,206 @@
 <h4>Forms <small> Reactive </small></h4>
-<hr>
-<form (ngSubmit)="save(formTemplate)" autocomplete="off" #formTemplate="ngForm">
-
+<hr />
+<form autocomplete="off" [formGroup]="formGroup" (ngSubmit)="save()">
   <div class="form-group row mb-3">
     <label class="col-2 col-form-label">Firstname</label>
     <div class="col-8">
+      <input
+        class="form-control"
+        type="text"
+        name="firstname"
+        placeholder="Firstname"
+        [class.is-invalid]="isValidFirstname"
+        formControlName="firstname"
+      />
+      <!-- [class.is-invalid]="formGroup.get('firstname')?.invalid && formGroup.get('firstname')?.touched" -->
 
-      <input class="form-control" type="text" name="firstname" [(ngModel)]="firstname" placeholder="Firstname"
-        minlength="5" required>
+      <small *ngIf="isValidFirstname" class="form-text text-danger">
+        Firstname requires that it be more than 5 characters
+      </small>
     </div>
   </div>
 
   <div class="form-group row mb-3">
     <label class="col-2 col-form-label">Lastname</label>
     <div class="col-8">
+      <input
+        class="form-control"
+        type="text"
+        name="lastname"
+        placeholder="Lastname"
+        [class.is-invalid]="isValidLastname"
+        formControlName="lastname"
+      />
 
-      <input class="form-control" type="text" name="lastname" [(ngModel)]="lastname" placeholder="Lastname"
-        minlength="5" required>
+      <small *ngIf="isValidLastname" class="form-text text-danger">
+        Lastname requires that it be more than 5 characters
+      </small>
     </div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row mb-3">
     <label class="col-2 col-form-label">E-mail</label>
     <div class="col-8">
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        placeholder="E-mail"
+        [class.is-invalid]="isValidEmail"
+        formControlName="email"
+      />
 
-      <input class="form-control" type="email" name="email" [(ngModel)]="email" placeholder="E-mail" email required>
+      <small *ngIf="isValidEmail" class="form-text text-danger">
+        The email format is not correct
+      </small>
     </div>
   </div>
 
+  <div class="form-group row mb-3">
+    <label class="col-2 col-form-label">Username</label>
+    <div class="col-8">
+      <input
+        class="form-control"
+        type="text"
+        name="username"
+        placeholder="Username"
+        [class.is-invalid]="isValidUsername"
+        formControlName="username"
+      />
 
+      <small *ngIf="formGroup.get('username')?.status === 'PENDING'" class="form-text text-success">
+          Verifying...
+        </small>
+      <small *ngIf="isValidUsername" class="form-text text-danger">
+        Username is obligatory!
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-8">
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        placeholder="Password"
+        [class.is-invalid]="isValidPassword"
+        formControlName="password"
+      />
+
+      <small *ngIf="isValidPassword" class="form-text text-danger">
+        Password is obligatory!
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-2 col-form-label">Confirm password</label>
+    <div class="col-8">
+      <input
+        class="form-control"
+        type="password"
+        name="confirmPassword"
+        placeholder="Confirm password"
+        [class.is-invalid]="isValidConfirmPassword"
+        formControlName="confirmPassword"
+      />
+
+      <small *ngIf="isValidConfirmPassword" class="form-text text-danger">
+        Passwords don't match!
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row" formGroupName="address">
+    <label class="col-2 col-form-label">Address</label>
+    <div class="row col-10">
+      <div class="col-6">
+        <input
+          class="form-control"
+          type="text"
+          name="district"
+          placeholder="district"
+          [class.is-invalid]="isValidDistrict"
+          formControlName="district"
+        />
+
+        <small *ngIf="isValidDistrict" class="form-text text-danger">
+          District is obligatory!
+        </small>
+      </div>
+
+      <div class="col-4">
+        <input
+          class="form-control"
+          type="text"
+          name="city"
+          placeholder="City"
+          [class.is-invalid]="isValidCity"
+          formControlName="city"
+        />
+
+        <small *ngIf="isValidCity" class="form-text text-danger">
+          City is obligatory!
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col">
+
+      <table class="table">
+
+        <thead class="table-dark">
+          <tr>
+            <th>Id</th>
+            <th>Hobbies</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+
+        <tbody formArrayName="hobbies">
+          <tr *ngFor="let control of hobbies.controls; let i = index;">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <input class="form-control" type="text" [formControlName]="i">
+            </td>
+            <td class="text-center">
+              <button class="btn btn-danger" type="button" (click)="removeHobby(i)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <button class="w-100 btn btn-primary mt-3" type="button" (click)="addHobby()">
+        <i class="fa-solid fa-add"></i>
+        Add
+      </button>
+
+    </div>
+  </div>
 
   <div class="form-group row mt-4">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="col-8">
-      <button type="submit" class="btn btn-outline-primary w-100">
-        SAVE
-      </button>
+      <button type="submit" class="btn btn-outline-primary w-100" [disabled]="formGroup.status === 'PENDING'">SAVE</button>
     </div>
   </div>
-
 </form>
+
+<hr />
+
+<pre>
+  Status form: {{ formGroup.valid }}
+  <br>
+  Status: {{ formGroup.status }}
+</pre>
+
+<pre>
+  {{ formGroup.value | json }}
+</pre>
