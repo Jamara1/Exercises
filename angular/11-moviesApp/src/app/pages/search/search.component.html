@@ -1,0 +1,9 @@
+
+<h1 class="animate__animated animate__fadeIn">Search movie: <small class="text-capitalize">{{ valueSearch }}</small></h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <app-movies-poster-grid *ngIf="movies.length > 0" [movies]="movies"></app-movies-poster-grid>
+  </div>
+</div>

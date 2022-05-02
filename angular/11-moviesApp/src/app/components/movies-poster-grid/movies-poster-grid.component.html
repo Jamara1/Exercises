@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-3 mb-4 animate__animated animate__backInLeft" *ngFor="let movie of movies">
+    <div class="pointer" (click)="getMovie(movie)">
+      <img
+        [src]="movie.poster_path | noimage"
+        [alt]="movie.title"
+        class="img-fluid poster"
+      />
+
+      <h3>{{ movie.title }}</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-10 text-white">
+        <star-rating
+          [value]="movie.vote_average"
+          [totalstars]="10"
+          checkedcolor="yellow"
+          uncheckedcolor="grey"
+          size="14px"
+          [readonly]="false"
+        >
+        </star-rating>
+      </div>
+
+      <div class="col-2 text-white">
+        {{ movie.vote_average | number: "1.1-2" }}
+      </div>
+    </div>
+  </div>
+</div>
