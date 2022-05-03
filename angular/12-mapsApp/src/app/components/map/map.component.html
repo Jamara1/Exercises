@@ -1,1 +1,9 @@
-<div class="full" id="map"></div>
+<mat-card>
+    <mat-card-title>Map example</mat-card-title>
+    <mat-card-content>
+        <div class="full" id="map"></div>
+        <div *ngIf="marks.length > 0">
+            <app-mark [marks]="marks" [showInfo]="showInfo"></app-mark>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,10 @@
+<div [hidden]="showInfo">
+    <div *ngFor="let mark of marks; let i = index;" id="content_{{i}}">
+        <strong>{{ mark.title }}</strong>
+        <p>
+            {{ mark.desc }}
+        </p>
+        <button mat-raised-button color="primary" class="me-1">Edit</button>
+        <button mat-raised-button color="warn">Remove</button>
+    </div>
+</div>
