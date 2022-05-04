@@ -1,2 +1,32 @@
 <h1 class="fw-normal">Youtube videos</h1>
-<hr> AIzaSyBsX6OXpZ7mEb4BFGSvsP_qYAsC518npZs UUuaPTYj15JSkETGnEseaFFg
+<hr>
+
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" *ngFor="let video of videos">
+        <div class="card animate__animated animate__backInLeft animate__faster">
+            <img [src]="video.thumbnails.high.url" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ video.title }}</h5>
+                <p class="card-text">
+                    <strong>Author:</strong> {{ video.channelTitle }}
+                </p>
+                <p class="card-text">
+                    <strong>Published:</strong> {{ video.publishedAt }}
+                </p>
+                <p class="card-text">
+                    {{ video.description | slice:0:150 }}...
+                </p>
+                <button type="button" class="w-100 btn btn-outline-danger" (click)="showVideo(video)">Watch video</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 text-center">
+    <div class="col">
+        <button class="btn btn-danger btn-lg" (click)="loadVideos()">
+          Siguiente pagina
+        </button>
+    </div>
+</div>
