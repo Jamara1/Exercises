@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { GoogleMapsModule } from '@angular/google-maps';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { MapComponent } from './components/map/map.component';
 import { MarkComponent } from './components/mark/mark.component';
@@ -24,6 +26,7 @@ import { MapEditComponent } from './components/map-edit/map-edit.component';
     BrowserAnimationsModule,
     MaterialModule,
     GoogleMapsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

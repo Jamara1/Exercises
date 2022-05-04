@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Marker } from 'src/app/classes/marker.class';
 import { MapEditComponent } from '../map-edit/map-edit.component';
 
@@ -11,13 +11,14 @@ import { MapEditComponent } from '../map-edit/map-edit.component';
   styleUrls: ['./map2.component.css'],
 })
 export class Map2Component implements OnInit {
-  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow;
+  @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow;
 
   mapOptions: google.maps.MapOptions = {
     center: { lat: 4.5709, lng: -74.2973 },
     zoom: 6,
   };
   markers: Marker[] = [];
+  infoMarker: Marker = new Marker({ lat: 4.5709, lng: -74.2973 });
 
   constructor(public snackBar: MatSnackBar, public dialog: MatDialog) {
     if (localStorage.getItem('markers')) {
@@ -47,9 +48,20 @@ export class Map2Component implements OnInit {
       data: { title: marker.title, desc: marker.desc },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      this.markers = result;
+    dialogRef.afterClosed().subscribe((result: Marker) => {
+      console.log(result);
+
+      if (!result) {
+        return;
+      }
+
+      marker.title = result.title;
+      marker.desc = result.desc;
+
+      this.markers[marker.index] = { ...marker };
+
+      this.saveStorage();
+      this.snackBar.open('Marker added', 'Close', { duration: 2000 });
     });
   }
 
@@ -59,7 +71,8 @@ export class Map2Component implements OnInit {
     this.snackBar.open('Marker deleted', 'Close', { duration: 2000 });
   }
 
-  openInfoWindow(marker: MapMarker) {
+  openInfoWindow(marker: MapMarker, info: Marker, i: number) {
+    this.infoMarker = { ...info, index: i };
     this.infoWindow.open(marker);
   }
 

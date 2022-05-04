@@ -1,9 +1,6 @@
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-map-edit',
@@ -11,16 +8,26 @@ import {
   styleUrls: ['./map-edit.component.css'],
 })
 export class MapEditComponent implements OnInit {
+  formGroup: FormGroup;
+
   constructor(
     public dialogRef: MatDialogRef<MapEditComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private formBuilder: FormBuilder
   ) {
-    console.log(data);
+    this.formGroup = formBuilder.group({
+      'title': data.title,
+      'desc': data.desc,
+    });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   saveChange() {
+    this.dialogRef.close(this.formGroup.value);
+  }
 
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

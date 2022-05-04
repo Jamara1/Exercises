@@ -1,18 +1,19 @@
 <mat-card>
     <mat-card-title>Map example 2</mat-card-title>
     <mat-card-content>
-        <google-map height="600px" width="800px" [options]="mapOptions" (mapClick)="createMarker($event)">
 
-            <map-marker #mark="mapMarker" *ngFor="let marker of markers; let i = index;" [position]="marker.position" (mapClick)="openInfoWindow(mark)">
-                <map-info-window>
-                    <strong>{{ marker.title }}</strong>
-                    <p>
-                        {{ marker.desc }}
-                    </p>
-                    <button mat-raised-button color="primary" class="me-1" (click)="updateMarker(marker)">Edit</button>
-                    <button mat-raised-button color="warn" (click)="deleteMarker(i)">Remove</button>
-                </map-info-window>
+        <google-map height="600px" width="800px" [options]="mapOptions" (mapClick)="createMarker($event)">
+            <map-marker #mark="mapMarker" *ngFor="let marker of markers; let i = index;" [position]="marker.position" (mapClick)="openInfoWindow(mark, marker, i)">
             </map-marker>
+            <map-info-window>
+                <strong>{{ infoMarker.title }}</strong>
+                <p>
+                    {{ infoMarker.desc }}
+                </p>
+                <button mat-raised-button color="primary" class="me-1" (click)="updateMarker(infoMarker)">Edit</button>
+                <button mat-raised-button color="warn" (click)="deleteMarker(infoMarker.index)">Remove</button>
+            </map-info-window>
         </google-map>
+
     </mat-card-content>
 </mat-card>
