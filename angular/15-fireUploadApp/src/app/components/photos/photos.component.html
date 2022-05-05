@@ -1,1 +1,32 @@
-<p>photos works!</p>
+<div class="row container-center animate__animated animate__fadeIn" *ngIf="loading">
+    <div class="col">
+        <i class="fa-solid fa-spinner fa-4x fa-spin"></i>
+    </div>
+</div>
+
+<div class="row container-center animate__animated animate__fadeIn" *ngIf="!loading && images.length === 0">
+    <div class="card-alert">
+        <div class="p-4">
+            <i class="fa-solid fa-circle-exclamation fa-3x"></i>
+            <p class="text-center mt-1">No images to display</p>
+
+            <button class="btn btn-dark" type="button" routerLink="/upload">
+                <i class="fa-solid fa-plus"></i> Add image
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4" *ngIf="!loading && images.length > 0 ">
+    <div class="col" *ngFor="let image of images">
+        <div class="card animate__animated animate__zoomIn bg-gray">
+            <div class="content-image">
+                <img [src]="image.url" alt="{{ image.name }}" class="img-fluid">
+            </div>
+            <hr>
+            <div class="card-body">
+                <h5 class="card-title">{{ image.name }}</h5>
+            </div>
+        </div>
+    </div>
+</div>

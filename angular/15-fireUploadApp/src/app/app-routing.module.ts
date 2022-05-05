@@ -1,12 +1,17 @@
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { PhotosComponent } from './components/photos/photos.component';
+import { UploadComponent } from './components/upload/upload.component';
 
-
+const ROUTES: Routes = [
+  { path: 'photos', component: PhotosComponent },
+  { path: 'upload', component: UploadComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'photos' },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forRoot(ROUTES)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -22,6 +22,37 @@
     margin-top: 30px;
 }
 
-.text-green {
-    color: green
+.content-image {
+    width: 300px;
+    height: 300px;
+    line-height: 300px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.content img {
+    vertical-align: middle;
+}
+
+.container-center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+}
+
+.container-center .col i {
+    position: absolute;
+    top: 40%;
+}
+
+.container-center .card-alert {
+    width: 60%;
+    position: absolute;
+    top: 30%;
+}
+
+.bg-gray {
+    background-color: rgba(0, 0, 0, 0.1);
 }

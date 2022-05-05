@@ -1,1 +1,44 @@
-<p>upload works!</p>
+<div class="row animate__animated animate__fadeIn">
+    <div class="col-md-4">
+
+        <h3>Select files</h3>
+
+        <div appNgDropFiles [files]="files" (mouseOn)="isOnElement = $event" class="well drop-zone" [ngClass]="{ 'file-over': isOnElement }">
+            <h4>Drop files here</h4>
+            <img src="assets/drop-images.png" alt="">
+        </div>
+
+    </div>
+
+    <div class="col-md-8">
+        <h4>Upload files</h4>
+
+        <button class="btn btn-success me-1" [disabled]="files.length === 0" (click)="uploadImages()">Upload to firebase</button>
+        <button class="btn btn-danger" (click)="clearFile()">Clear</button>
+
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>File name</th>
+                    <th>Size</th>
+                    <th>Progress</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngIf="files.length === 0">
+                    <td colspan="3" class="text-center">No images loaded</td>
+                </tr>
+                <tr *ngFor="let file of files">
+                    <td [ngClass]="{ 'text-success': file.progress >= 100 }">{{ file.fileName }}</td>
+                    <td>{{ file.file.size/1024/1024 | number:'.2-2' }} MB </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': file.progress + '%' }"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
