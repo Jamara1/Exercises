@@ -1,0 +1,10 @@
+<div class="container my-5">
+    <h1>Dynamic Graphics <small>Angular</small></h1>
+    <select class="form-select" aria-label="Graphics" #selectChart>
+    <option selected>Select chart</option>
+    <option  #options *ngFor="let chart of charts" [value]="chart.id">{{ chart.type }}</option>
+    </select>
+    <hr>
+    <app-line-chart *ngIf="selectChart.options"></app-line-chart>
+    <app-bar-chart *ngIf=""></app-bar-chart>
+</div>
