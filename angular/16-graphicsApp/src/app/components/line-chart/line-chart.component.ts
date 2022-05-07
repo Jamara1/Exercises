@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import { AnnotationOptions } from 'chartjs-plugin-annotation';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
@@ -70,7 +71,31 @@ export class LineChartComponent {
         },
       },
     },
-  }
+
+    plugins: {
+      legend: { display: true },
+      annotation: {
+        annotations: [
+          {
+            type: 'line',
+            scaleID: 'x',
+            value: 'March',
+            borderColor: 'orange',
+            borderWidth: 2,
+            label: {
+              position: 'center',
+              enabled: true,
+              color: 'orange',
+              content: 'LineAnno',
+              font: {
+                weight: 'bold',
+              },
+            },
+          },
+        ],
+      },
+    },
+  };
 
   public lineChartType: ChartType = 'line';
 

@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <div class="chart">
+            <canvas baseChart [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins">
+      </canvas>
+        </div>
+    </div>
+</div>
+<div class="button-row mt-2">
+    <button mat-button mat-raised-button color="primary" class="me-2" (click)="toggleLegend()">Toggle Legend</button>
+    <button mat-button mat-raised-button color="primary" class="me-2" (click)="changeLabels()">Change Labels</button>
+    <button mat-button mat-raised-button color="primary" class="me-2" (click)="addSlice()">Add Slice</button>
+    <button mat-button mat-raised-button color="primary" class="me-2" (click)="removeSlice()">Remove Slice</button>
+    <button mat-button mat-raised-button color="primary" class="me-2" (click)="changeLegendPosition()">Change Legend Position</button>
+</div>

@@ -1,10 +1,25 @@
 <div class="container my-5">
     <h1>Dynamic Graphics <small>Angular</small></h1>
-    <select class="form-select" aria-label="Graphics" #selectChart>
-    <option selected>Select chart</option>
-    <option  #options *ngFor="let chart of charts" [value]="chart.id">{{ chart.type }}</option>
+    <select class="form-select" aria-label="Graphics" (change)="valueOption(selectChart)" #selectChart>
+    <option  #options *ngFor="let chart of charts" [value]="chart.id">{{ chart.name }}</option>
     </select>
     <hr>
-    <app-line-chart *ngIf="selectChart.options"></app-line-chart>
-    <app-bar-chart *ngIf=""></app-bar-chart>
+    <container-element [ngSwitch]="selectChart.value">
+        <!-- the same view can be shown in more than one case -->
+        <app-line-chart *ngSwitchCase="1"></app-line-chart>
+        <app-bar-chart *ngSwitchCase="2"></app-bar-chart>
+        <app-doughnut-chart *ngSwitchCase="3"></app-doughnut-chart>
+        <app-radar-chart *ngSwitchCase="4"></app-radar-chart>
+        <app-pie-chart *ngSwitchCase="5"></app-pie-chart>
+        <app-polar-chart *ngSwitchCase="6"></app-polar-chart>
+        <app-bubble-chart *ngSwitchCase="7"></app-bubble-chart>
+        <app-scatter-chart *ngSwitchCase="8"></app-scatter-chart>
+        <app-dynamic-chart *ngSwitchCase="9"></app-dynamic-chart>
+        <!--default case when there are no matches -->
+        <div class="alert alert-info text-center pt-4" *ngSwitchDefault>
+            <i class="fa-solid fa-circle-info fa-3x mb-2"></i>
+            <br>
+            <h3><strong>Select chart</strong></h3>
+        </div>
+    </container-element>
 </div>
