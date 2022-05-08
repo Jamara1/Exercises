@@ -1,1 +1,26 @@
-<p>vitual works!</p>
+<h1>Virtual Scroll</h1>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="goStart()">Go to the start</button>
+  </div>
+
+  <div class="col">
+    <button class="btn btn-warning" (click)="goMiddle()">Go to the middle</button>
+  </div>
+
+  <div class="col">
+    <button class="btn btn-secondary" (click)="goEnd()">Go to the end</button>
+  </div>
+</div>
+<br />
+
+<cdk-virtual-scroll-viewport class="list-container list-group" itemSize="50">
+  <div
+    class="list-group-item animate__animated animate__bounceInLeft"
+    *cdkVirtualFor="let person of people; let i = index; let count = count"
+  >
+    Item {{ i }} / {{ count }}
+  </div>
+</cdk-virtual-scroll-viewport>
