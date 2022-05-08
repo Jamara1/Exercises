@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-vitual',
-  templateUrl: './vitual.component.html',
+  selector: 'app-virtual',
+  templateUrl: './virtual.component.html',
   styles: [
   ]
 })
-export class VitualComponent implements OnInit {
+export class VirtualComponent implements OnInit {
 
   constructor() { }
 
