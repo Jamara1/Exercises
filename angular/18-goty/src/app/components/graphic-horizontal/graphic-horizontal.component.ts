@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-graphic-horizontal',
   templateUrl: './graphic-horizontal.component.html',
   styles: [],
 })
-export class GraphicHorizontalComponent {
-  result: any[] = [
+export class GraphicHorizontalComponent implements OnDestroy{
+  results: any[] = [
     {
       name: 'Game 1',
       value: 20,
@@ -17,11 +17,13 @@ export class GraphicHorizontalComponent {
     },
     {
       name: 'Game 3',
+      value: 15,
+    },
+    {
+      name: 'Game 4',
       value: 30,
     },
   ];
-
-  view: [number, number] = [700, 400];
 
   // options
   showXAxis: boolean = true;
@@ -35,7 +37,22 @@ export class GraphicHorizontalComponent {
 
   colorScheme = 'nightLights';
 
-  constructor() {}
+  interval: any;
+
+  constructor() {
+
+    this.interval = setInterval(() => {
+      console.log('Tick');
+
+      const newResults = [...this.results];
+
+      newResults.forEach(result => {
+        result.value = Math.round(Math.random() * 500);
+      });
+
+      this.results = [...newResults];
+    }, 1500);
+  }
 
   onSelect(data: any): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
@@ -47,5 +64,9 @@ export class GraphicHorizontalComponent {
 
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 }
